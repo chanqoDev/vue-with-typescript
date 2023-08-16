@@ -5,19 +5,18 @@
         <button @click="handleClick('title')">order by title</button>
         <button @click="handleClick('salary')">order by Salary</button>
         <button @click="handleClick('location')">order by location</button>
-        <JobList :jobs="jobs" :order="order" />
       </div>
     </header>
+    <JobList :jobs="jobs" :order="order" />
   </div>
 </template>
  
 
 <script lang="ts">
-// reactive gets imported automatically
-import { defineComponent, reactive, ref, toRefs } from 'vue';
+import { defineComponent, ref } from 'vue';
 import JobList from './components/JobsList.vue'; 
-import OrderTerm from "./types/OrderTerm"; 
-import Job from "./types/Job";  
+import Job from "@/types/Job";  
+import OrderTerm from '@/types/OrderTerm'
 
 export default defineComponent({
   name: 'App',
@@ -29,6 +28,7 @@ export default defineComponent({
       { title: 'Swimming Teacher', location: 'punjabi valley', salary: 25000, id: '3' },
     ]);
     const order = ref<OrderTerm>('title'); 
+
     const handleClick = (term: OrderTerm ) => {
       order.value = term; 
     }
