@@ -1,8 +1,10 @@
 <template>
     <div class="job-list">
+        <p>Ordered by {{ order }}</p>
         <ul>
-            <li v-for="job in jobs" :key="job.id"><h2>{{ job.title }} in {{ job.location }}</h2> <div class="salary"><p>{{ job.salary }} USD</p></div>
-            <div class="description"> This is a good job for you to get started in passing props into the browser</div></li>
+            <li v-for="job in jobs" :key="job.id"><h2>{{ job.title }} in {{ job.location }}</h2>
+            <div class="salary"><p>{{ job.salary }} USD</p></div>
+            <div class="description">  Passing in props into the browser</div></li>
         </ul>
     </div>
 </template>
@@ -11,12 +13,17 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import Job from "@/types/Job"; 
+import OrderTerm from "@types/OrderTerm"; 
 
 export default defineComponent({
     props: {
         jobs: {
             requried: true,
             type: Array as PropType<Job[]>
+        }, 
+        order: {
+            requried: true,
+            type: String as PropType<OrderTerm>
         }
     }
 })
